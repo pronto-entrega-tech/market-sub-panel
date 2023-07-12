@@ -1,0 +1,15 @@
+{
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react",
+  "cSpell.words": [
+    "Authed",
+    "ellipsize",
+    "notif",
+    "notifs",
+    "prontoentrega",
+    "Roboto"
+  ]
+}

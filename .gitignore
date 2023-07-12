@@ -1,0 +1,10 @@
+node_modules/**/*
+.expo/*
+
+.env
+
+# Manual testing
+.test.ts
+
+# macOS
+.DS_Store

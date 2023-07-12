@@ -1,0 +1,55 @@
+{
+  "Create component": {
+    "scope": "typescriptreact",
+    "prefix": ["react-component", "rc"],
+    "body": [
+      "import React from \"react\";",
+      "",
+      "const $TM_FILENAME_BASE = () => {",
+      "  return (",
+      "    ",
+      "  )",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE;"
+    ]
+  },
+  "Create useState": {
+    "scope": "typescript,typescriptreact",
+    "prefix": ["use-state", "us"],
+    "body": ["const [state, setState] = useState();"]
+  },
+  "Create useEffect": {
+    "scope": "typescript,typescriptreact",
+    "prefix": ["use-effect", "ue"],
+    "body": ["useEffect(() => {", "", "}, []);"]
+  },
+  "Create StyleSheet": {
+    "scope": "typescriptreact",
+    "prefix": ["create-stylesheet", "css"],
+    "body": ["const styles = StyleSheet.create({", "", "});"]
+  },
+  "Create context": {
+    "scope": "typescriptreact",
+    "prefix": ["context"],
+    "body": [
+      "import { ReactNode, useState, useCallback } from 'react';",
+      "import { createContext } from 'use-context-selector';",
+      "import { createUseContext } from '~/functions/createUseContext';",
+      "",
+      "const useProviderValues = () => {",
+      "  return {};",
+      "};",
+      "",
+      "type ${TM_FILENAME_BASE}Values = ReturnType<typeof useProviderValues>;",
+      "",
+      "const ${TM_FILENAME_BASE} = createContext({} as ${TM_FILENAME_BASE}Values);",
+      "",
+      "export const use${TM_FILENAME_BASE} = createUseContext(${TM_FILENAME_BASE});",
+      "",
+      "export const ${TM_FILENAME_BASE/Context/$1/}Provider = (props: { children: ReactNode }) => (",
+      "  <${TM_FILENAME_BASE}.Provider value={useProviderValues()} {...props} />",
+      ");"
+    ]
+  }
+}
