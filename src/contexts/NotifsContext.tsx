@@ -1,11 +1,10 @@
-import React, { useCallback, useState, ReactNode, useEffect } from "react";
-import { createContext } from "use-context-selector";
+import { useCallback, useState, useEffect } from "react";
 import * as Notifications from "expo-notifications";
-import { createUseContext } from "~/functions/createUseContext";
+import { createContext } from "~/functions/createContext";
 import { Notif } from "~/core/types";
 import { store } from "~/services/store";
 
-const useProviderValues = () => {
+const useNotifs = () => {
   const [notifs, setNotifs] = useState<Notif[]>();
 
   useEffect(() => {
@@ -48,12 +47,5 @@ const useProviderValues = () => {
   };
 };
 
-type NotifsContextValues = ReturnType<typeof useProviderValues>;
-
-const NotifsContext = createContext({} as NotifsContextValues);
-
-export const useNotifsContext = createUseContext(NotifsContext);
-
-export const NotifsProvider = (props: { children: ReactNode }) => (
-  <NotifsContext.Provider value={useProviderValues()} {...props} />
-);
+export const [NotifsProvider, useNotifsContext, useNotifsSelector] =
+  createContext(useNotifs);

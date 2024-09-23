@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useState, ReactNode } from "react";
-import { createContext } from "use-context-selector";
-import { createUseContext } from "~/functions/createUseContext";
+import { useCallback, useEffect, useState } from "react";
+import { createContext } from "~/functions/createContext";
 import { events } from "~/services/events";
 import { Task } from "~/core/types";
 import { store } from "~/services/store";
 
-const useProviderValues = () => {
+const useTasks = () => {
   const [tasks, _setTasks] = useState<Task[]>();
 
   const setTasks = useCallback(async (tasks: Task[]) => {
@@ -34,12 +33,5 @@ const useProviderValues = () => {
   };
 };
 
-type TasksContextValues = ReturnType<typeof useProviderValues>;
-
-const TasksContext = createContext({} as TasksContextValues);
-
-export const useTasksContext = createUseContext(TasksContext);
-
-export const TasksProvider = (props: { children: ReactNode }) => (
-  <TasksContext.Provider value={useProviderValues()} {...props} />
-);
+export const [TasksProvider, useTasksContext, useTasksContextSelector] =
+  createContext(useTasks);

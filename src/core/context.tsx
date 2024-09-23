@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState, ReactNode } from "react";
-import { createContext } from "use-context-selector";
+import { useCallback, useEffect, useState } from "react";
 import { AlertState } from "~/components/MyAlert";
-import { createUseContext } from "~/functions/createUseContext";
+import { createContext } from "~/functions/createContext";
 import { api } from "~/services/api";
 import { Buffer } from "buffer";
 import { second } from "~/constants/time";
@@ -11,7 +10,7 @@ import { ToastState } from "~/components/MyToast";
 import { useConnection } from "~/functions/connection";
 import { fail } from "~/functions/fail";
 
-const useProviderValues = () => {
+const useCommon = () => {
   const hasConnection = useConnection() ?? true;
   const [statefulAccessToken, setStatefulAccessToken] =
     useState<typeof accessToken.current>();
@@ -98,12 +97,5 @@ const useProviderValues = () => {
   };
 };
 
-export type MyContextValues = ReturnType<typeof useProviderValues>;
-
-const MyContext = createContext({} as MyContextValues);
-
-export const useMyContext = createUseContext(MyContext);
-
-export const MyProvider = (props: { children: ReactNode }) => (
-  <MyContext.Provider value={useProviderValues()} {...props} />
-);
+export const [MyProvider, useMyContext, useMyContextSelector] =
+  createContext(useCommon);

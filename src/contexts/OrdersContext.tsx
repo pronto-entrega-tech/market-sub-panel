@@ -1,6 +1,5 @@
-import React, { useEffect, useState, ReactNode } from "react";
-import { createContext } from "use-context-selector";
-import { createUseContext } from "~/functions/createUseContext";
+import { useEffect, useState } from "react";
+import { createContext } from "~/functions/createContext";
 import { Order } from "~/core/types";
 import { API_WS } from "~/constants/urls";
 import { useMyContext } from "~/core/context";
@@ -10,7 +9,7 @@ import { notifyMsg } from "~/constants/notifyMessages";
 import { transformOrder } from "~/functions/transform";
 import { useNotifsContext } from "./NotifsContext";
 
-const useProviderValues = () => {
+const useOrders = () => {
   const { isAuthed } = useMyContext();
   const { addNotif } = useNotifsContext();
   const [hasError, setError] = useState(false);
@@ -77,12 +76,5 @@ const useProviderValues = () => {
   };
 };
 
-type OrdersContextValues = ReturnType<typeof useProviderValues>;
-
-const OrdersContext = createContext({} as OrdersContextValues);
-
-export const useOrdersContext = createUseContext(OrdersContext);
-
-export const OrdersProvider = (props: { children: ReactNode }) => (
-  <OrdersContext.Provider value={useProviderValues()} {...props} />
-);
+export const [OrdersProvider, useOrdersContext, useOrdersContextSelector] =
+  createContext(useOrders);
