@@ -1,9 +1,9 @@
-import React, { useCallback, useState, ReactNode, useEffect } from 'react';
-import { createContext } from 'use-context-selector';
-import * as Notifications from 'expo-notifications';
-import { createUseContext } from '~/functions/createUseContext';
-import { Notif } from '~/core/types';
-import { store } from '~/services/store';
+import React, { useCallback, useState, ReactNode, useEffect } from "react";
+import { createContext } from "use-context-selector";
+import * as Notifications from "expo-notifications";
+import { createUseContext } from "~/functions/createUseContext";
+import { Notif } from "~/core/types";
+import { store } from "~/services/store";
 
 const useProviderValues = () => {
   const [notifs, setNotifs] = useState<Notif[]>();

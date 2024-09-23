@@ -10,7 +10,7 @@ export type RootParamList = {
 
 export type ScreenName = keyof RootParamList;
 
-export type SubPermission = 'STOCK' | 'DELIVERY';
+export type SubPermission = "STOCK" | "DELIVERY";
 
 export type Profile = {
   id: string;
@@ -20,16 +20,16 @@ export type Profile = {
 };
 
 export type OrderStatus =
-  | 'PAYMENT_PROCESSING'
-  | 'PAYMENT_FAILED'
-  | 'PAYMENT_REQUIRE_ACTION'
-  | 'APPROVAL_PENDING'
-  | 'PROCESSING'
-  | 'DELIVERY_PENDING'
-  | 'COMPLETING'
-  | 'COMPLETED'
-  | 'CANCELING'
-  | 'CANCELED';
+  | "PAYMENT_PROCESSING"
+  | "PAYMENT_FAILED"
+  | "PAYMENT_REQUIRE_ACTION"
+  | "APPROVAL_PENDING"
+  | "PROCESSING"
+  | "DELIVERY_PENDING"
+  | "COMPLETING"
+  | "COMPLETED"
+  | "CANCELING"
+  | "CANCELED";
 
 export type Order = {
   order_id: string;
@@ -64,7 +64,7 @@ export type Product = {
 };
 
 export type Task = {
-  name: 'confirmation';
+  name: "confirmation";
   data: {
     token: string;
   };

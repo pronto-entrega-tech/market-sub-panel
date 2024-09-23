@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { createTimeAgo } from '~/functions/timeAgoMsg';
+import { useEffect, useState } from "react";
+import { createTimeAgo } from "~/functions/timeAgoMsg";
 
 export const useTimeAgoMsg = (createdAt: Date) => {
   const [now, setNow] = useState(new Date());

@@ -1,15 +1,15 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import Loading from '~/components/Loading';
-import MyDivider from '~/components/MyDivider';
-import MyHeader from '~/components/MyHeader';
-import MyIcon from '~/components/MyIcon';
-import MyText from '~/components/MyText';
-import { globalStyles } from '~/constants/globalStyles';
-import { myColors } from '~/constants/myColors';
-import { useNotifsContext } from '~/contexts/NotifsContext';
-import { Notif } from '~/core/types';
-import { useTimeAgoMsg } from '~/hooks/useTimeAgoMsg';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import Loading from "~/components/Loading";
+import MyDivider from "~/components/MyDivider";
+import MyHeader from "~/components/MyHeader";
+import MyIcon from "~/components/MyIcon";
+import MyText from "~/components/MyText";
+import { globalStyles } from "~/constants/globalStyles";
+import { myColors } from "~/constants/myColors";
+import { useNotifsContext } from "~/contexts/NotifsContext";
+import { Notif } from "~/core/types";
+import { useTimeAgoMsg } from "~/hooks/useTimeAgoMsg";
 
 const NotificationsBody = () => {
   const { notifs } = useNotifsContext();
@@ -33,9 +33,9 @@ const NotificationItem = ({ notif }: { notif: Notif }) => {
   return (
     <>
       <View style={styles.taskContainer}>
-        <MyIcon name='shopping-outline' color='#636363' size={32} />
+        <MyIcon name="shopping-outline" color="#636363" size={32} />
         <View style={{ marginLeft: 16, flexGrow: 1 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+          <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
             <MyText style={{ color: myColors.text4, fontSize: 17 }}>
               {title} {timeAgoMsg}
             </MyText>
@@ -49,10 +49,8 @@ const NotificationItem = ({ notif }: { notif: Notif }) => {
 
 const Nothing = () => (
   <View
-    style={[
-      globalStyles.centralizer,
-      { backgroundColor: myColors.background },
-    ]}>
+    style={[globalStyles.centralizer, { backgroundColor: myColors.background }]}
+  >
     <MyText style={{ fontSize: 15, color: myColors.text2 }}>
       Nenhuma notificação ainda
     </MyText>
@@ -61,17 +59,17 @@ const Nothing = () => (
 
 const Notifications = () => (
   <>
-    <MyHeader title='Notificações' />
+    <MyHeader title="Notificações" />
     <NotificationsBody />
   </>
 );
 
 const styles = StyleSheet.create({
   taskContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingHorizontal: 16,
     paddingVertical: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   divider: {
     backgroundColor: myColors.divider2,

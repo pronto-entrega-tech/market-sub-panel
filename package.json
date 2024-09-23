@@ -9,6 +9,7 @@
     "ios": "expo run:ios",
     "start-android": "expo start --dev-client --android",
     "start-ios": "expo start --dev-client --ios",
+    "format": "prettier . --write",
     "lint": "expo lint",
     "type-check": "tsc --noEmit",
     "android:build": "eas build --local --platform android"

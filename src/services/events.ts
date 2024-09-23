@@ -1,5 +1,5 @@
-import Events from 'events';
-import { Task } from '~/core/types';
+import Events from "events";
+import { Task } from "~/core/types";
 
 type Event = {
   unauthorized: undefined;

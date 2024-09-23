@@ -1,6 +1,6 @@
-import useSWR, { SWRResponse } from 'swr';
-import { Order } from '~/core/types';
-import { transformOrder } from '~/functions/transform';
+import useSWR, { SWRResponse } from "swr";
+import { Order } from "~/core/types";
+import { transformOrder } from "~/functions/transform";
 
 const withTransform = <T extends SWRResponse>(
   swr: T,
@@ -17,4 +17,4 @@ const withTransform = <T extends SWRResponse>(
 };
 
 export const useOrders = () =>
-  withTransform(useSWR<Order[]>('/orders'), transformOrder);
+  withTransform(useSWR<Order[]>("/orders"), transformOrder);

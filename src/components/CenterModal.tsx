@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -6,10 +6,10 @@ import {
   StyleProp,
   ViewStyle,
   Pressable,
-} from 'react-native';
-import { myColors } from '~/constants/myColors';
-import { zIndex } from '~/constants/zIndex';
-import { ModalState } from '~/hooks/useModalState';
+} from "react-native";
+import { myColors } from "~/constants/myColors";
+import { zIndex } from "~/constants/zIndex";
+import { ModalState } from "~/hooks/useModalState";
 
 const CenterModal = ({
   state: { isVisible, onDismiss: dismiss },
@@ -39,7 +39,8 @@ const CenterModal = ({
         StyleSheet.absoluteFill,
         styles.container,
         { opacity: state.opacity },
-      ]}>
+      ]}
+    >
       <Pressable style={StyleSheet.absoluteFill} onPress={dismiss} />
       <View style={[styles.modal, style]}>{children}</View>
     </Animated.View>
@@ -49,18 +50,18 @@ const CenterModal = ({
 const styles = StyleSheet.create({
   container: {
     zIndex: zIndex.Modal,
-    position: 'absolute',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    position: "absolute",
+    justifyContent: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modal: {
-    alignSelf: 'center',
-    position: 'absolute',
-    width: '90%',
+    alignSelf: "center",
+    position: "absolute",
+    width: "90%",
     maxWidth: 500,
     padding: 24,
     borderRadius: 10,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   title: {
     fontSize: 18,

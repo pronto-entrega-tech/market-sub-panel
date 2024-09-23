@@ -1,14 +1,14 @@
-import * as BackgroundFetch from 'expo-background-fetch';
-import { BackgroundFetchResult } from 'expo-background-fetch';
-import * as TaskManager from 'expo-task-manager';
-import { api } from '~/services/api';
-import { decodeConfirmationToken } from '~/functions/confirmationToken';
-import { store } from '~/services/store';
-import { getHasConnection } from '~/functions/connection';
-import { minute } from '~/constants/time';
-import { events } from '~/services/events';
+import * as BackgroundFetch from "expo-background-fetch";
+import { BackgroundFetchResult } from "expo-background-fetch";
+import * as TaskManager from "expo-task-manager";
+import { api } from "~/services/api";
+import { decodeConfirmationToken } from "~/functions/confirmationToken";
+import { store } from "~/services/store";
+import { getHasConnection } from "~/functions/connection";
+import { minute } from "~/constants/time";
+import { events } from "~/services/events";
 
-const CHECK_QUEUE_TASK = 'check-queue';
+const CHECK_QUEUE_TASK = "check-queue";
 
 export const checkTasks = async () => {
   const [hasConnection, tasks] = await Promise.all([
@@ -26,10 +26,10 @@ export const checkTasks = async () => {
     }),
   );
 
-  const remainJobs = tasks.filter((_, i) => results[i]?.status === 'rejected');
+  const remainJobs = tasks.filter((_, i) => results[i]?.status === "rejected");
 
   await store.setTasks(remainJobs);
-  events.emit('tasksUpdated', remainJobs);
+  events.emit("tasksUpdated", remainJobs);
 
   return BackgroundFetchResult.NewData;
 };

@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState, ReactNode } from 'react';
-import { createContext } from 'use-context-selector';
-import { createUseContext } from '~/functions/createUseContext';
-import { events } from '~/services/events';
-import { Task } from '~/core/types';
-import { store } from '~/services/store';
+import React, { useCallback, useEffect, useState, ReactNode } from "react";
+import { createContext } from "use-context-selector";
+import { createUseContext } from "~/functions/createUseContext";
+import { events } from "~/services/events";
+import { Task } from "~/core/types";
+import { store } from "~/services/store";
 
 const useProviderValues = () => {
   const [tasks, _setTasks] = useState<Task[]>();
@@ -16,7 +16,7 @@ const useProviderValues = () => {
   useEffect(() => {
     store.getTasks().then(_setTasks);
 
-    return events.on('tasksUpdated', _setTasks);
+    return events.on("tasksUpdated", _setTasks);
   }, []);
 
   const addTask = useCallback(

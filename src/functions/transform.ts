@@ -1,5 +1,5 @@
-import { Notif, Order, Product } from '~/core/types';
-import { cleanString } from './cleanString';
+import { Notif, Order, Product } from "~/core/types";
+import { cleanString } from "./cleanString";
 
 const toDate = (v: any) => v && new Date(v);
 

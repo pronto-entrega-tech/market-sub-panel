@@ -1,12 +1,12 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import IconButton from './IconButton';
-import MyDivider from './MyDivider';
-import MyText from './MyText';
-import { globalStyles } from '~/constants/globalStyles';
-import { myColors } from '~/constants/myColors';
-import { myFonts } from '~/constants/myFonts';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import IconButton from "./IconButton";
+import MyDivider from "./MyDivider";
+import MyText from "./MyText";
+import { globalStyles } from "~/constants/globalStyles";
+import { myColors } from "~/constants/myColors";
+import { myFonts } from "~/constants/myFonts";
+import { useNavigation } from "@react-navigation/native";
 
 const MyHeader = ({
   title,
@@ -45,25 +45,25 @@ const GoBackButton = ({ onGoBack }: { onGoBack?: () => void }) => {
   const navigation = useNavigation();
   const goBack = onGoBack ?? navigation.goBack;
 
-  return <IconButton icon='arrow-left' type='back' onPress={goBack} />;
+  return <IconButton icon="arrow-left" type="back" onPress={goBack} />;
 };
 
 const styles = StyleSheet.create({
   header: {
     backgroundColor: myColors.background,
-    justifyContent: 'center',
+    justifyContent: "center",
     height: 56,
   },
   textHeader: {
     color: myColors.primaryColor,
     fontSize: 20,
     fontFamily: myFonts.Bold,
-    position: 'absolute',
-    alignSelf: 'center',
-    textAlign: 'center',
+    position: "absolute",
+    alignSelf: "center",
+    textAlign: "center",
   },
   rightIcon: {
-    position: 'absolute',
+    position: "absolute",
     right: 0,
   },
   divider: {

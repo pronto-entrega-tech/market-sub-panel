@@ -11,23 +11,23 @@
       "  )",
       "}",
       "",
-      "export default $TM_FILENAME_BASE;"
-    ]
+      "export default $TM_FILENAME_BASE;",
+    ],
   },
   "Create useState": {
     "scope": "typescript,typescriptreact",
     "prefix": ["use-state", "us"],
-    "body": ["const [state, setState] = useState();"]
+    "body": ["const [state, setState] = useState();"],
   },
   "Create useEffect": {
     "scope": "typescript,typescriptreact",
     "prefix": ["use-effect", "ue"],
-    "body": ["useEffect(() => {", "", "}, []);"]
+    "body": ["useEffect(() => {", "", "}, []);"],
   },
   "Create StyleSheet": {
     "scope": "typescriptreact",
     "prefix": ["create-stylesheet", "css"],
-    "body": ["const styles = StyleSheet.create({", "", "});"]
+    "body": ["const styles = StyleSheet.create({", "", "});"],
   },
   "Create context": {
     "scope": "typescriptreact",
@@ -49,7 +49,7 @@
       "",
       "export const ${TM_FILENAME_BASE/Context/$1/}Provider = (props: { children: ReactNode }) => (",
       "  <${TM_FILENAME_BASE}.Provider value={useProviderValues()} {...props} />",
-      ");"
-    ]
-  }
+      ");",
+    ],
+  },
 }

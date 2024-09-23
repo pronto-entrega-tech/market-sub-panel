@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Animated } from 'react-native';
-import { device } from '~/constants/device';
-import { globalStyles } from '~/constants/globalStyles';
-import { zIndex } from '~/constants/zIndex';
-import { useMyContext } from '~/core/context';
-import MyIcon, { IconName } from './MyIcon';
-import MyText from './MyText';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Animated } from "react-native";
+import { device } from "~/constants/device";
+import { globalStyles } from "~/constants/globalStyles";
+import { zIndex } from "~/constants/zIndex";
+import { useMyContext } from "~/core/context";
+import MyIcon, { IconName } from "./MyIcon";
+import MyText from "./MyText";
 
 export type ToastState = {
   message: string;
   long?: boolean;
-  type?: 'Confirmation' | 'Error';
+  type?: "Confirmation" | "Error";
 };
 
 const MyToast = () => {
@@ -21,7 +21,7 @@ const MyToast = () => {
   });
 
   useEffect(() => {
-    if (toastState.message === '') return;
+    if (toastState.message === "") return;
 
     const useNativeDriver = true;
 
@@ -57,13 +57,13 @@ const MyToast = () => {
     );
 
     return () => {
-      toastState.message = '';
+      toastState.message = "";
     };
   }, [toastState, modalState.opacity, modalState.scale]);
 
   const map = {
-    Error: { icon: 'close-circle', color: 'red' },
-    Confirmation: { icon: 'check', color: '#4BB543' },
+    Error: { icon: "close-circle", color: "red" },
+    Confirmation: { icon: "check", color: "#4BB543" },
   } satisfies { [x: string]: { icon: IconName; color: string } };
   const { icon, color } =
     (toastState.type && map[toastState.type]) ?? map.Confirmation;
@@ -78,9 +78,10 @@ const MyToast = () => {
           opacity: modalState.opacity,
           transform: [{ scale: modalState.scale }],
         },
-      ]}>
-      <MyIcon name={icon} size={24} color='white' />
-      <MyText style={{ color: 'white', marginLeft: 8 }}>
+      ]}
+    >
+      <MyIcon name={icon} size={24} color="white" />
+      <MyText style={{ color: "white", marginLeft: 8 }}>
         {toastState.message}
       </MyText>
     </Animated.View>
@@ -90,14 +91,14 @@ const MyToast = () => {
 const styles = StyleSheet.create({
   model: {
     zIndex: zIndex.Toast,
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     padding: 10,
     marginBottom: device.iPhoneNotch ? 142 : 112,
     borderRadius: 50,
-    alignSelf: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: "center",
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 

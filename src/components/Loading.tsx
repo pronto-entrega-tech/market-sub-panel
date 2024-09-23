@@ -1,13 +1,13 @@
-import React from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { globalStyles } from '~/constants/globalStyles';
-import { myColors } from '~/constants/myColors';
-import MyText from './MyText';
+import React from "react";
+import { View, ActivityIndicator, StyleSheet } from "react-native";
+import { globalStyles } from "~/constants/globalStyles";
+import { myColors } from "~/constants/myColors";
+import MyText from "./MyText";
 
 const Loading = ({ title }: { title?: string }) => (
   <View style={[globalStyles.centralizer, styles.container]}>
     {!!title && <MyText style={styles.loading}>{title}</MyText>}
-    <ActivityIndicator color={myColors.loading} size='large' />
+    <ActivityIndicator color={myColors.loading} size="large" />
   </View>
 );
 

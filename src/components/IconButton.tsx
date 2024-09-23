@@ -1,29 +1,29 @@
-import React from 'react';
+import React from "react";
 import {
   GestureResponderEvent,
   Insets,
   StyleProp,
   StyleSheet,
   ViewStyle,
-} from 'react-native';
-import { globalStyles } from '~/constants/globalStyles';
-import { myColors } from '~/constants/myColors';
-import MyTouchable from './MyTouchable';
-import MyIcon, { IconName } from './MyIcon';
+} from "react-native";
+import { globalStyles } from "~/constants/globalStyles";
+import { myColors } from "~/constants/myColors";
+import MyTouchable from "./MyTouchable";
+import MyIcon, { IconName } from "./MyIcon";
 
 type ButtonTypes =
-  | 'blank'
-  | 'clear'
-  | 'add'
-  | 'add2'
-  | 'addHorizontal'
-  | 'addLarge'
-  | 'fill'
-  | 'back'
-  | 'profile'
-  | 'prodIcons'
-  | 'profile2'
-  | 'cancel';
+  | "blank"
+  | "clear"
+  | "add"
+  | "add2"
+  | "addHorizontal"
+  | "addLarge"
+  | "fill"
+  | "back"
+  | "profile"
+  | "prodIcons"
+  | "profile2"
+  | "cancel";
 
 type IconButtonProps = {
   onPress?: (event: GestureResponderEvent) => void;
@@ -55,12 +55,12 @@ const IconButton = ({
   let innerHitSlop;
   let iconStyle: StyleProp<ViewStyle> = {};
   switch (type) {
-    case 'blank':
+    case "blank":
       break;
-    case 'clear':
+    case "clear":
       iconStyle = styles.buttonClear;
       break;
-    case 'add':
+    case "add":
       iconStyle = [
         styles.buttonAdd,
         globalStyles.elevation4,
@@ -68,11 +68,11 @@ const IconButton = ({
       ];
       innerHitSlop = { top: 9, bottom: 9, left: 12, right: 12 };
       break;
-    case 'add2':
+    case "add2":
       iconStyle = styles.buttonAdd2;
       innerHitSlop = { top: 9, bottom: 9, left: 9, right: 9 };
       break;
-    case 'addHorizontal':
+    case "addHorizontal":
       iconStyle = [
         styles.buttonAddHorizontal,
         globalStyles.elevation4,
@@ -80,7 +80,7 @@ const IconButton = ({
       ];
       innerHitSlop = { top: 10, bottom: 10, left: 10, right: 12 };
       break;
-    case 'addLarge':
+    case "addLarge":
       iconStyle = [
         styles.buttonAddLarge,
         globalStyles.elevation4,
@@ -88,23 +88,23 @@ const IconButton = ({
       ];
       innerHitSlop = { top: 9, bottom: 9, left: 12, right: 12 };
       break;
-    case 'back':
+    case "back":
       iconStyle = styles.buttonBack;
       break;
-    case 'cancel':
+    case "cancel":
       iconStyle = styles.cancel;
       break;
-    case 'prodIcons':
+    case "prodIcons":
       iconStyle = styles.buttonProdIcons;
       break;
-    case 'profile':
+    case "profile":
       iconStyle = [
         styles.buttonProfile,
         globalStyles.elevation4,
         globalStyles.darkBorder,
       ];
       break;
-    case 'profile2':
+    case "profile2":
       iconStyle = [styles.buttonProfile2, globalStyles.elevation4];
       break;
     default:
@@ -119,7 +119,8 @@ const IconButton = ({
     <MyTouchable
       hitSlop={hitSlop ?? innerHitSlop}
       style={[styles.base, iconStyle, style]}
-      {...{ onPress, disabled }}>
+      {...{ onPress, disabled }}
+    >
       <MyIcon name={icon} size={size} color={color} />
     </MyTouchable>
   );
@@ -127,14 +128,14 @@ const IconButton = ({
 
 const styles = StyleSheet.create({
   base: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 60,
   },
   buttonDefault: {
     width: 54,
     height: 54,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     margin: 5,
   },
   buttonClear: {
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
   buttonAdd: {
     width: 32,
     height: 28,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     margin: 2,
   },
   buttonAdd2: {
@@ -156,13 +157,13 @@ const styles = StyleSheet.create({
   buttonAddHorizontal: {
     width: 26,
     height: 26,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     margin: 2,
   },
   buttonAddLarge: {
     width: 34,
     height: 30,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     margin: 2,
   },
   buttonBack: {
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
     marginTop: -45,
     right: -40,
     marginBottom: 8,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     margin: 5,
   },
   buttonProfile2: {

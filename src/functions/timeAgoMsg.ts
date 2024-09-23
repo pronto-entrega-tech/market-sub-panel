@@ -1,5 +1,5 @@
-import { formatDistanceToNowStrict } from 'date-fns';
-import { day, hour, minute, month, year } from '~/constants/time';
+import { formatDistanceToNowStrict } from "date-fns";
+import { day, hour, minute, month, year } from "~/constants/time";
 
 /**
  * @example 'há 1 hora', 'há 5 minutos', 'agora'
@@ -14,10 +14,10 @@ export const createTimeAgo = (createdAt: Date, now = new Date()) => {
   const years = Math.trunc(timeAgo / year);
 
   const msg = !minutes
-    ? 'agora'
+    ? "agora"
     : formatDistanceToNowStrict(createdAt, {
         addSuffix: true,
-        roundingMethod: 'floor',
+        roundingMethod: "floor",
       });
 
   const timeUntilUpdate = (() => {

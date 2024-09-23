@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import Animated, {
   useSharedValue,
   withRepeat,
@@ -6,8 +6,8 @@ import Animated, {
   withTiming,
   WithTimingConfig,
   Easing,
-} from 'react-native-reanimated';
-import { DimensionValue, StyleProp, ViewStyle } from 'react-native';
+} from "react-native-reanimated";
+import { DimensionValue, StyleProp, ViewStyle } from "react-native";
 
 const timingInConfig: WithTimingConfig = {
   duration: 1000,
@@ -35,7 +35,7 @@ export function Skeleton(p: { style?: StyleProp<ViewStyle> }) {
   return <Animated.View style={[{ opacity }, p.style]} />;
 }
 
-export function SkeletonText({ width = '75%' }: { width?: DimensionValue }) {
+export function SkeletonText({ width = "75%" }: { width?: DimensionValue }) {
   return (
     <Skeleton
       style={{
@@ -43,7 +43,7 @@ export function SkeletonText({ width = '75%' }: { width?: DimensionValue }) {
         marginVertical: 1,
         height: 16,
         borderRadius: 999,
-        backgroundColor: 'gray',
+        backgroundColor: "gray",
       }}
     />
   );

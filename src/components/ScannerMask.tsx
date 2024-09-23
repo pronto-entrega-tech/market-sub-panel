@@ -1,11 +1,11 @@
-import React from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { globalStyles } from '~/constants/globalStyles';
-import { device } from '~/constants/device';
+import React from "react";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { globalStyles } from "~/constants/globalStyles";
+import { device } from "~/constants/device";
 
 const ScannerMask = () => (
   <View style={[StyleSheet.absoluteFill, globalStyles.centralizer]}>
-    <View style={[{ width: '70%', aspectRatio: 1 }]}>
+    <View style={[{ width: "70%", aspectRatio: 1 }]}>
       <View style={styles.maskBase}>
         <Square />
       </View>
@@ -28,10 +28,10 @@ const Square = ({ style }: { style?: StyleProp<ViewStyle> }) => (
       {
         width: device.width * 0.8,
         aspectRatio: 1,
-        borderColor: 'white',
+        borderColor: "white",
         borderWidth: 5,
         borderRadius: 14,
-        position: 'absolute',
+        position: "absolute",
       },
       style,
     ]}
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
   maskBase: {
     width: 60,
     aspectRatio: 1,
-    overflow: 'hidden',
-    position: 'absolute',
+    overflow: "hidden",
+    position: "absolute",
   },
 });
 

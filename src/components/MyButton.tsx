@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
   StyleProp,
   ViewStyle,
   TextStyle,
   StyleSheet,
   GestureResponderEvent,
-} from 'react-native';
-import { myFonts } from '~/constants/myFonts';
-import { device } from '~/constants/device';
-import MyText from './MyText';
-import MyTouchable from './MyTouchable';
-import MyIcon, { IconName, MyIconProps } from './MyIcon';
+} from "react-native";
+import { myFonts } from "~/constants/myFonts";
+import { device } from "~/constants/device";
+import MyText from "./MyText";
+import MyTouchable from "./MyTouchable";
+import MyIcon, { IconName, MyIconProps } from "./MyIcon";
 
 type MyButtonProps = {
   onPress?: (event: GestureResponderEvent) => void;
@@ -19,7 +19,7 @@ type MyButtonProps = {
   image?: React.ReactNode;
   iconRight?: boolean;
   disabled?: boolean;
-  type?: 'solid' | 'outline' | 'clear';
+  type?: "solid" | "outline" | "clear";
   buttonStyle?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
 };
@@ -35,7 +35,7 @@ const MyButton = ({
   icon,
   iconRight = false,
   disabled = false,
-  type = 'solid',
+  type = "solid",
   buttonStyle,
   titleStyle,
 }: MyButtonProps) => {
@@ -43,21 +43,21 @@ const MyButton = ({
     borderRadius: 4,
     minHeight: 44,
     minWidth: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: iconRight ? 'row-reverse' : 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: iconRight ? "row-reverse" : "row",
     // `padding` overwrite other paddings
     paddingTop: 8,
     paddingRight: 8,
     paddingBottom: 8,
     paddingLeft: 8,
-    ...{ transitionDuration: '200ms' },
+    ...{ transitionDuration: "200ms" },
   };
 
-  const hoverColor = '#48a2eb';
-  const solidTextColor = !disabled ? 'white' : '#99a1a8';
-  const textColor = !disabled ? hoverColor : '#9CA3AA';
-  const backgroundColor = !disabled ? hoverColor : '#E3E6E8';
+  const hoverColor = "#48a2eb";
+  const solidTextColor = !disabled ? "white" : "#99a1a8";
+  const textColor = !disabled ? hoverColor : "#9CA3AA";
+  const backgroundColor = !disabled ? hoverColor : "#E3E6E8";
 
   const typeStyle = StyleSheet.create({
     solid: {
@@ -74,17 +74,18 @@ const MyButton = ({
     <>
       {image}
       {icon && (
-        <MyIcon {...(typeof icon === 'string' ? { name: icon } : icon)} />
+        <MyIcon {...(typeof icon === "string" ? { name: icon } : icon)} />
       )}
       <MyText
         style={[
           {
-            color: type === 'solid' ? solidTextColor : textColor,
+            color: type === "solid" ? solidTextColor : textColor,
             fontFamily: device.android ? myFonts.Medium : myFonts.Regular,
             fontSize: 16,
           },
           titleStyle,
-        ]}>
+        ]}
+      >
         {title}
       </MyText>
     </>
@@ -92,9 +93,10 @@ const MyButton = ({
 
   return (
     <MyTouchable
-      solid={type === 'solid'}
+      solid={type === "solid"}
       style={[baseStyle, typeStyle, buttonStyle]}
-      {...{ onPress, disabled }}>
+      {...{ onPress, disabled }}
+    >
       {buttonText}
     </MyTouchable>
   );

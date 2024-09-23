@@ -1,16 +1,16 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import MyHeader from '~/components/MyHeader';
-import MyDivider from '~/components/MyDivider';
-import MyIcon from '~/components/MyIcon';
-import MyText from '~/components/MyText';
-import { myColors } from '~/constants/myColors';
-import { Task } from '~/core/types';
-import Loading from '~/components/Loading';
-import { decodeConfirmationToken } from '~/functions/confirmationToken';
-import { formatOrderId } from '~/functions/format';
-import { globalStyles } from '~/constants/globalStyles';
-import { useTasksContext } from '~/contexts/TasksContext';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import MyHeader from "~/components/MyHeader";
+import MyDivider from "~/components/MyDivider";
+import MyIcon from "~/components/MyIcon";
+import MyText from "~/components/MyText";
+import { myColors } from "~/constants/myColors";
+import { Task } from "~/core/types";
+import Loading from "~/components/Loading";
+import { decodeConfirmationToken } from "~/functions/confirmationToken";
+import { formatOrderId } from "~/functions/format";
+import { globalStyles } from "~/constants/globalStyles";
+import { useTasksContext } from "~/contexts/TasksContext";
 
 const TasksBody = () => {
   const { tasks } = useTasksContext();
@@ -37,9 +37,9 @@ const TaskItem = ({ task }: { task: Task }) => {
   return (
     <>
       <View style={styles.taskContainer}>
-        <MyIcon name='qrcode-scan' color='#636363' size={32} />
+        <MyIcon name="qrcode-scan" color="#636363" size={32} />
         <View style={{ marginLeft: 16, flexGrow: 1 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+          <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
             <MyText style={{ color: myColors.text4, fontSize: 17 }}>
               Pedido {formatOrderId(token.market_order_id)}
             </MyText>
@@ -61,22 +61,22 @@ const Nothing = () => (
 
 const Tasks = () => (
   <>
-    <MyHeader title='Fila de confirmações' />
+    <MyHeader title="Fila de confirmações" />
     <TasksBody />
   </>
 );
 
 const styles = StyleSheet.create({
   title: {
-    alignSelf: 'center',
-    textAlign: 'center',
+    alignSelf: "center",
+    textAlign: "center",
     fontSize: 18,
     color: myColors.text2,
     marginTop: 20,
   },
   subtitle: {
-    alignSelf: 'center',
-    textAlign: 'center',
+    alignSelf: "center",
+    textAlign: "center",
     fontSize: 16,
     color: myColors.text,
     marginTop: 4,
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   taskContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingHorizontal: 16,
     paddingVertical: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   divider: {
     backgroundColor: myColors.divider2,

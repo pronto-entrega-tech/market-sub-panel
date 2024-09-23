@@ -1,19 +1,19 @@
-import React from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
-import MyButton from '~/components/MyButton';
-import MyIcon, { IconName } from '~/components/MyIcon';
-import MyDivider from '~/components/MyDivider';
-import MyText from '~/components/MyText';
-import { useProfile } from '~/hooks/useProfile';
-import { globalStyles } from '~/constants/globalStyles';
-import { myColors } from '~/constants/myColors';
-import { myFonts } from '~/constants/myFonts';
-import { useNavigation } from '@react-navigation/native';
-import { ScreenName } from '~/core/types';
-import { useMyContext } from '~/core/context';
-import { useLoading } from '~/hooks/useLoading';
-import Loading from '~/components/Loading';
-import { SkeletonText } from '~/components/Skeleton';
+import React from "react";
+import { ScrollView, View, StyleSheet } from "react-native";
+import MyButton from "~/components/MyButton";
+import MyIcon, { IconName } from "~/components/MyIcon";
+import MyDivider from "~/components/MyDivider";
+import MyText from "~/components/MyText";
+import { useProfile } from "~/hooks/useProfile";
+import { globalStyles } from "~/constants/globalStyles";
+import { myColors } from "~/constants/myColors";
+import { myFonts } from "~/constants/myFonts";
+import { useNavigation } from "@react-navigation/native";
+import { ScreenName } from "~/core/types";
+import { useMyContext } from "~/core/context";
+import { useLoading } from "~/hooks/useLoading";
+import Loading from "~/components/Loading";
+import { SkeletonText } from "~/components/Skeleton";
 
 type CardData = {
   icon: IconName;
@@ -25,18 +25,18 @@ const Profile = () => {
   const { data: profile } = useProfile();
   const [isExiting, , withExiting] = useLoading();
 
-  if (isExiting) return <Loading title='Saindo' />;
+  if (isExiting) return <Loading title="Saindo" />;
 
   const cardsData: CardData[] = [
     {
-      icon: 'qrcode-scan',
-      title: 'Fila de confirmações',
-      screen: 'Tasks',
+      icon: "qrcode-scan",
+      title: "Fila de confirmações",
+      screen: "Tasks",
     },
     {
-      icon: 'bell',
-      title: 'Notificações',
-      screen: 'Notifications',
+      icon: "bell",
+      title: "Notificações",
+      screen: "Notifications",
     },
     // {
     //   icon: 'help-circle',
@@ -49,13 +49,13 @@ const Profile = () => {
     //   screen: '' /* 'Config' */,
     // },
     {
-      icon: 'monitor-cellphone',
-      title: 'Dispositivos conectados',
-      screen: 'Devices',
+      icon: "monitor-cellphone",
+      title: "Dispositivos conectados",
+      screen: "Devices",
     },
     {
-      icon: 'exit-to-app',
-      title: 'Sair',
+      icon: "exit-to-app",
+      title: "Sair",
       onPress: withExiting(signOut),
     },
   ];
@@ -64,11 +64,12 @@ const Profile = () => {
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={globalStyles.notch}
-      contentContainerStyle={{ paddingBottom: 68 }}>
+      contentContainerStyle={{ paddingBottom: 68 }}
+    >
       <>
         <View style={styles.header}>
           <MyIcon
-            name='account-circle-outline'
+            name="account-circle-outline"
             color={myColors.grey4}
             size={100}
           />
@@ -83,7 +84,8 @@ const Profile = () => {
             styles.cardsContainer,
             globalStyles.elevation3,
             globalStyles.darkBorder,
-          ]}>
+          ]}
+        >
           {cardsData.map((card, index) => (
             <CardItem
               key={index}
@@ -112,20 +114,20 @@ const CardItem = ({
   return (
     <View>
       {index !== 0 && <MyDivider style={styles.divider} />}
-      <View style={{ justifyContent: 'center' }}>
+      <View style={{ justifyContent: "center" }}>
         <MyIcon
           style={{
-            position: 'absolute',
-            alignSelf: 'flex-end',
+            position: "absolute",
+            alignSelf: "flex-end",
             right: 4,
           }}
-          name='chevron-right'
+          name="chevron-right"
           size={32}
           color={myColors.grey2}
         />
         <MyButton
           onPress={
-            'onPress' in card
+            "onPress" in card
               ? card.onPress
               : () => navigate(card.screen as any)
           }
@@ -148,7 +150,7 @@ const CardItem = ({
             fontSize: 17,
             marginLeft: 6,
           }}
-          type='clear'
+          type="clear"
         />
       </View>
     </View>
@@ -157,8 +159,8 @@ const CardItem = ({
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingLeft: 30,
     paddingBottom: 22,
     paddingTop: 18,
@@ -171,7 +173,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   cardsContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     marginHorizontal: 16,
     marginBottom: 16,
     borderRadius: 8,
@@ -191,7 +193,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   button: {
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
     paddingLeft: 10,
     paddingVertical: 9,
   },

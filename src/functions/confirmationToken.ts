@@ -1,23 +1,23 @@
-import { Buffer } from 'buffer';
-import { fail } from './fail';
+import { Buffer } from "buffer";
+import { fail } from "./fail";
 
 export const isTokenValid = (token: string) => {
   try {
-    const [encodedHeader] = token.split('.');
+    const [encodedHeader] = token.split(".");
     const header = JSON.parse(
-      Buffer.from(encodedHeader ?? fail(), 'base64').toString(),
+      Buffer.from(encodedHeader ?? fail(), "base64").toString(),
     );
 
-    return header.typ === 'JWT';
+    return header.typ === "JWT";
   } catch {
     return false;
   }
 };
 
 export const decodeConfirmationToken = (token: string) => {
-  const [, encodedPayload] = token.split('.');
+  const [, encodedPayload] = token.split(".");
   const payload = JSON.parse(
-    Buffer.from(encodedPayload ?? fail(), 'base64').toString(),
+    Buffer.from(encodedPayload ?? fail(), "base64").toString(),
   );
 
   return {

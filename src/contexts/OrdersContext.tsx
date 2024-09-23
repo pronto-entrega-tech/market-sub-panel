@@ -1,14 +1,14 @@
-import React, { useEffect, useState, ReactNode } from 'react';
-import { createContext } from 'use-context-selector';
-import { createUseContext } from '~/functions/createUseContext';
-import { Order } from '~/core/types';
-import { API_WS } from '~/constants/urls';
-import { useMyContext } from '~/core/context';
-import { accessToken } from '~/core/accessToken';
-import { io } from 'socket.io-client';
-import { notifyMsg } from '~/constants/notifyMessages';
-import { transformOrder } from '~/functions/transform';
-import { useNotifsContext } from './NotifsContext';
+import React, { useEffect, useState, ReactNode } from "react";
+import { createContext } from "use-context-selector";
+import { createUseContext } from "~/functions/createUseContext";
+import { Order } from "~/core/types";
+import { API_WS } from "~/constants/urls";
+import { useMyContext } from "~/core/context";
+import { accessToken } from "~/core/accessToken";
+import { io } from "socket.io-client";
+import { notifyMsg } from "~/constants/notifyMessages";
+import { transformOrder } from "~/functions/transform";
+import { useNotifsContext } from "./NotifsContext";
 
 const useProviderValues = () => {
   const { isAuthed } = useMyContext();
@@ -21,21 +21,21 @@ const useProviderValues = () => {
     if (!isAuthed) return;
 
     const socket = io(API_WS, {
-      transports: ['websocket'],
+      transports: ["websocket"],
       auth: { token: accessToken.current },
     });
 
-    socket.on('exception', (...a) => {
+    socket.on("exception", (...a) => {
       setError(true);
-      console.error('WS Exception', ...a);
+      console.error("WS Exception", ...a);
     });
 
-    socket.on('orders', (...orderUpdates: Partial<Order>[]) => {
+    socket.on("orders", (...orderUpdates: Partial<Order>[]) => {
       if (!orderUpdates.length) return setOrders((v) => v ?? new Map());
 
       setOrderUpdates((v) => [...v, ...orderUpdates]);
     });
-    socket.emit('active-orders');
+    socket.emit("active-orders");
   }, [isAuthed]);
 
   useEffect(() => {
@@ -46,13 +46,13 @@ const useProviderValues = () => {
 
       const newOrders = new Map(orders);
 
-      const completedStatuses = ['COMPLETING', 'COMPLETED'];
-      const finishedStatuses = ['CANCELING', 'CANCELED', ...completedStatuses];
+      const completedStatuses = ["COMPLETING", "COMPLETED"];
+      const finishedStatuses = ["CANCELING", "CANCELED", ...completedStatuses];
 
-      if (finishedStatuses.includes(newOrder.status ?? '')) {
+      if (finishedStatuses.includes(newOrder.status ?? "")) {
         const id = newOrders.get(newOrder.order_id)?.market_order_id;
         if (id) {
-          const msg = completedStatuses.includes(newOrder.status ?? '')
+          const msg = completedStatuses.includes(newOrder.status ?? "")
             ? notifyMsg.orderCompleted(id)
             : notifyMsg.orderCanceled(id);
 

@@ -1,12 +1,12 @@
-import { StyleSheet } from 'react-native';
-import { myColors } from './myColors';
-import { device, notchHeight } from './device';
+import { StyleSheet } from "react-native";
+import { myColors } from "./myColors";
+import { device, notchHeight } from "./device";
 
 export const globalStyles = StyleSheet.create({
   centralizer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   notch: {
     marginTop: notchHeight,
@@ -17,9 +17,9 @@ export const globalStyles = StyleSheet.create({
     paddingBottom: 66,
   },
   bottomButton: {
-    backgroundColor: 'white',
-    position: 'absolute',
-    alignSelf: 'center',
+    backgroundColor: "white",
+    position: "absolute",
+    alignSelf: "center",
     height: 46,
     minWidth: 210,
     // MyButton overwrite paddingHorizontal
@@ -34,7 +34,7 @@ export const globalStyles = StyleSheet.create({
   },
   elevation1: {
     elevation: 1,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -44,7 +44,7 @@ export const globalStyles = StyleSheet.create({
   },
   elevation2: {
     elevation: 2,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -54,7 +54,7 @@ export const globalStyles = StyleSheet.create({
   },
   elevation3: {
     elevation: 3,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -64,7 +64,7 @@ export const globalStyles = StyleSheet.create({
   },
   elevation4: {
     elevation: 4,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -74,7 +74,7 @@ export const globalStyles = StyleSheet.create({
   },
   elevation5: {
     elevation: 5,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 2,

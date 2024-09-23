@@ -1,9 +1,9 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { myColors } from '~/constants/myColors';
-import { globalStyles } from '~/constants/globalStyles';
-import MyButton from './MyButton';
-import MyText from './MyText';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { myColors } from "~/constants/myColors";
+import { globalStyles } from "~/constants/globalStyles";
+import MyButton from "./MyButton";
+import MyText from "./MyText";
 
 const Connection = () => (
   <View style={globalStyles.centralizer}>
@@ -16,7 +16,7 @@ const Server = (onPress?: () => void) => (
     <MyText style={styles.title}>Erro ao se conectar com o servidor</MyText>
     <MyText style={styles.subtitle}>Tente novamente mais tarde</MyText>
     {onPress && (
-      <MyButton title='Tentar novamente' onPress={onPress} type='clear' />
+      <MyButton title="Tentar novamente" onPress={onPress} type="clear" />
     )}
   </View>
 );
@@ -24,7 +24,7 @@ const Saving = (onPress?: () => void) => (
   <View style={globalStyles.centralizer}>
     <MyText style={styles.title}>Erro tentar ao salvar</MyText>
     {onPress && (
-      <MyButton title='Tentar novamente' onPress={onPress} type='clear' />
+      <MyButton title="Tentar novamente" onPress={onPress} type="clear" />
     )}
   </View>
 );
@@ -43,11 +43,11 @@ const NothingOrder = () => (
 );
 
 export type MyErrors =
-  | 'server'
-  | 'connection'
-  | 'saving'
-  | 'missing_address'
-  | 'nothing_order'
+  | "server"
+  | "connection"
+  | "saving"
+  | "missing_address"
+  | "nothing_order"
   | null;
 
 const Errors = ({
@@ -63,16 +63,16 @@ const Errors = ({
     saving: () => Saving(onPress),
     missing_address: () => MissingAddress(),
     nothing_order: () => NothingOrder(),
-  }[error ?? 'server']());
+  })[error ?? "server"]();
 
 const styles = StyleSheet.create({
   title: {
-    textAlign: 'center',
+    textAlign: "center",
     color: myColors.text3,
     fontSize: 19,
   },
   subtitle: {
-    textAlign: 'center',
+    textAlign: "center",
     marginHorizontal: 8,
     marginTop: 4,
     marginBottom: 6,

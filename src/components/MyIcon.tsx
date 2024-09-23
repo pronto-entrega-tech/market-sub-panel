@@ -1,7 +1,7 @@
-import React from 'react';
-import { StyleProp, TextStyle } from 'react-native';
-import Icon from '@expo/vector-icons/MaterialCommunityIcons';
-import { myColors } from '~/constants/myColors';
+import React from "react";
+import { StyleProp, TextStyle } from "react-native";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+import { myColors } from "~/constants/myColors";
 
 export type IconName = keyof typeof Icon.glyphMap;
 export const iconNames = Object.keys(Icon.glyphMap) as IconName[];

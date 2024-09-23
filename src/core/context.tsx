@@ -1,22 +1,22 @@
-import React, { useCallback, useEffect, useState, ReactNode } from 'react';
-import { createContext } from 'use-context-selector';
-import { AlertState } from '~/components/MyAlert';
-import { createUseContext } from '~/functions/createUseContext';
-import { api } from '~/services/api';
-import { Buffer } from 'buffer';
-import { second } from '~/constants/time';
-import { events } from '~/services/events';
-import { accessToken } from './accessToken';
-import { ToastState } from '~/components/MyToast';
-import { useConnection } from '~/functions/connection';
-import { fail } from '~/functions/fail';
+import React, { useCallback, useEffect, useState, ReactNode } from "react";
+import { createContext } from "use-context-selector";
+import { AlertState } from "~/components/MyAlert";
+import { createUseContext } from "~/functions/createUseContext";
+import { api } from "~/services/api";
+import { Buffer } from "buffer";
+import { second } from "~/constants/time";
+import { events } from "~/services/events";
+import { accessToken } from "./accessToken";
+import { ToastState } from "~/components/MyToast";
+import { useConnection } from "~/functions/connection";
+import { fail } from "~/functions/fail";
 
 const useProviderValues = () => {
   const hasConnection = useConnection() ?? true;
   const [statefulAccessToken, setStatefulAccessToken] =
     useState<typeof accessToken.current>();
   const [alertState, setAlertState] = useState<AlertState>();
-  const [toastState, setToastState] = useState<ToastState>({ message: '' });
+  const [toastState, setToastState] = useState<ToastState>({ message: "" });
 
   const isAuthed =
     statefulAccessToken === undefined ? undefined : !!statefulAccessToken;
@@ -45,9 +45,9 @@ const useProviderValues = () => {
       return;
     }
 
-    const [, encodedPayload] = statefulAccessToken.split('.');
+    const [, encodedPayload] = statefulAccessToken.split(".");
     const payload = JSON.parse(
-      Buffer.from(encodedPayload ?? fail(), 'base64').toString(),
+      Buffer.from(encodedPayload ?? fail(), "base64").toString(),
     );
     const timeLeft = payload.exp * second - Date.now();
 
@@ -59,7 +59,7 @@ const useProviderValues = () => {
   }, [hasConnection, statefulAccessToken, setAccessToken]);
 
   useEffect(() => {
-    return events.on('unauthorized', () => {
+    return events.on("unauthorized", () => {
       setAccessToken(null);
     });
   }, [setAccessToken]);
@@ -73,7 +73,7 @@ const useProviderValues = () => {
     (
       title: string,
       subtitle?: string,
-      opts?: Omit<AlertState, 'title' | 'subtitle'>,
+      opts?: Omit<AlertState, "title" | "subtitle">,
     ) => setAlertState({ title, subtitle, ...opts } as AlertState),
     [],
   );
@@ -82,7 +82,7 @@ const useProviderValues = () => {
     setAlertState(undefined);
   };
 
-  const toast = (message: string, opts?: Omit<ToastState, 'message'>) => {
+  const toast = (message: string, opts?: Omit<ToastState, "message">) => {
     setToastState({ message, ...opts });
   };
 

@@ -1,18 +1,18 @@
-declare module '*.ttf' {
+declare module "*.ttf" {
   const content: number;
   export default content;
 }
 
-declare module '*.png' {
+declare module "*.png" {
   const content: number;
   export default content;
 }
 
-declare module '*.webp' {
+declare module "*.webp" {
   const content: number;
   export default content;
 }
 
 declare namespace ReactNavigation {
-  type RootParamList = import('~/core/types').RootParamList;
+  type RootParamList = import("~/core/types").RootParamList;
 }

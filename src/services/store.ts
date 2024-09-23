@@ -1,20 +1,20 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Notif, Task } from '~/core/types';
-import { transformNotif } from '~/functions/transform';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Notif, Task } from "~/core/types";
+import { transformNotif } from "~/functions/transform";
 
-const prefix = '@prontoentrega:';
+const prefix = "@prontoentrega:";
 
 const key = {
-  isNewUser: prefix + 'isNewUser',
-  refreshToken: prefix + 'refreshToken',
-  tasks: prefix + 'tasks',
-  notif: prefix + 'notif',
+  isNewUser: prefix + "isNewUser",
+  refreshToken: prefix + "refreshToken",
+  tasks: prefix + "tasks",
+  notif: prefix + "notif",
 };
 
 export const store = {
   setIsNewUser: async (isNewUser: boolean) => {
     if (!isNewUser) {
-      await AsyncStorage.setItem(key.isNewUser, 'false');
+      await AsyncStorage.setItem(key.isNewUser, "false");
     } else {
       await AsyncStorage.removeItem(key.isNewUser);
     }
@@ -22,7 +22,7 @@ export const store = {
 
   getIsNewUser: async () => {
     const value = await AsyncStorage.getItem(key.isNewUser);
-    return value !== 'false';
+    return value !== "false";
   },
 
   setRefreshToken: async (value: string | null) => {

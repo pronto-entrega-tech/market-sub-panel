@@ -1,11 +1,11 @@
-import { Dimensions, Platform, StatusBar } from 'react-native';
+import { Dimensions, Platform, StatusBar } from "react-native";
 
-const android = Platform.OS === 'android';
-const iOS = Platform.OS === 'ios';
+const android = Platform.OS === "android";
+const iOS = Platform.OS === "ios";
 
-const iPad = Platform.OS === 'ios' && Platform.isPad;
+const iPad = Platform.OS === "ios" && Platform.isPad;
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get("window");
 const aspectRatio = height / width;
 
 // https://blog.calebnance.com/development/iphone-ipad-pixel-sizes-guide-complete-list.html
@@ -14,10 +14,10 @@ const iPhoneNotch =
   iOS && (height === 812 || height === 844 || height === 896 || height === 926);
 
 export const notchHeight = android
-  ? StatusBar.currentHeight ?? 0
+  ? (StatusBar.currentHeight ?? 0)
   : iPhoneNotch
-  ? 34
-  : 0;
+    ? 34
+    : 0;
 
 export const device = {
   android,

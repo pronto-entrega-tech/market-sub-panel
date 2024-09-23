@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   TouchableNativeFeedback,
@@ -8,8 +8,8 @@ import {
   GestureResponderEvent,
   TouchableHighlight,
   TouchableOpacity,
-} from 'react-native';
-import { device } from '~/constants/device';
+} from "react-native";
+import { device } from "~/constants/device";
 
 type MyTouchableProps = {
   onPress?: (event: GestureResponderEvent) => void;
@@ -32,10 +32,11 @@ const MyTouchable = ({
     const TouchableHybrid: any = solid ? TouchableHighlight : TouchableOpacity;
     return (
       <TouchableHybrid
-        underlayColor='#68b5f2'
+        underlayColor="#68b5f2"
         disabled={disabled}
         onPress={onPress}
-        style={style}>
+        style={style}
+      >
         <>{children}</>
       </TouchableHybrid>
     );
@@ -47,13 +48,14 @@ const MyTouchable = ({
       useForeground
       background={
         solid
-          ? TouchableNativeFeedback.Ripple('rgba(255, 255, 255, .32)', false)
+          ? TouchableNativeFeedback.Ripple("rgba(255, 255, 255, .32)", false)
           : undefined
       }
       hitSlop={hitSlop}
       disabled={disabled}
-      onPress={onPress}>
-      <View style={[{ overflow: 'hidden' }, style]}>{children}</View>
+      onPress={onPress}
+    >
+      <View style={[{ overflow: "hidden" }, style]}>{children}</View>
     </TouchableNativeFeedback>
   );
 };
