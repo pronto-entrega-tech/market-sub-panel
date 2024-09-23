@@ -1,13 +1,11 @@
 {
   "name": "market-sub-panel",
-  "version": "1.0.0",
   "author": "ProntoEntrega",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "start": "expo start --port 19001",
-    "android": "yarn start --android",
-    "ios": "yarn start --ios",
+    "android": "expo start --port 8082 --dev-client --android",
+    "ios": "expo start --port 8082 --dev-client --ios",
     "use-dev-api": "cross-env USE_DEV_API=true",
     "use-local-ip": "cross-env LOCAL_IP=$(node -p \"require('os').networkInterfaces().en0.find((v) => v.family === 'IPv4').address\")"
   },
