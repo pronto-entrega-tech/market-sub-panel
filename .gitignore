@@ -3,8 +3,11 @@ node_modules/**/*
 
 .env
 
+/android
+/ios
+
 # Manual testing
-.test.ts
+src/test.ts
 
 # macOS
 .DS_Store

@@ -1,6 +1,5 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
-import SkeletonContent from 'react-native-skeleton-content';
 import MyButton from '~/components/MyButton';
 import MyIcon, { IconName } from '~/components/MyIcon';
 import MyDivider from '~/components/MyDivider';
@@ -14,6 +13,7 @@ import { ScreenName } from '~/core/types';
 import { useMyContext } from '~/core/context';
 import { useLoading } from '~/hooks/useLoading';
 import Loading from '~/components/Loading';
+import { SkeletonText } from '~/components/Skeleton';
 
 type CardData = {
   icon: IconName;
@@ -75,9 +75,7 @@ const Profile = () => {
           {profile ? (
             <MyText style={styles.name}>{profile.name}</MyText>
           ) : (
-            <SkeletonContent isLoading={true} containerStyle={styles.name}>
-              <View style={{ height: 24, width: 120 }} />
-            </SkeletonContent>
+            <SkeletonText width={120} />
           )}
         </View>
         <View
@@ -142,8 +140,8 @@ const CardItem = ({
             index === 0
               ? styles.top
               : index === length - 1
-              ? styles.bottom
-              : { borderRadius: 0 },
+                ? styles.bottom
+                : { borderRadius: 0 },
           ]}
           titleStyle={{
             color: myColors.text2,

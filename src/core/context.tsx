@@ -9,6 +9,7 @@ import { events } from '~/services/events';
 import { accessToken } from './accessToken';
 import { ToastState } from '~/components/MyToast';
 import { useConnection } from '~/functions/connection';
+import { fail } from '~/functions/fail';
 
 const useProviderValues = () => {
   const hasConnection = useConnection() ?? true;
@@ -46,7 +47,7 @@ const useProviderValues = () => {
 
     const [, encodedPayload] = statefulAccessToken.split('.');
     const payload = JSON.parse(
-      Buffer.from(encodedPayload, 'base64').toString(),
+      Buffer.from(encodedPayload ?? fail(), 'base64').toString(),
     );
     const timeLeft = payload.exp * second - Date.now();
 

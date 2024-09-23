@@ -1,10 +1,8 @@
 import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { SWRConfig } from 'swr';
 import MyAlert from '~/components/MyAlert';
 import MyToast from '~/components/MyToast';
-import { fonts } from '~/constants/myFonts';
 import SignIn from '~/pages/SignIn';
 import { apiUtils } from '~/services/api/utils';
 import BottomTabs from './BottomTabs';
@@ -20,6 +18,7 @@ import * as Notifications from 'expo-notifications';
 import { setDefaultOptions } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useConnection } from '~/functions/connection';
+import { StatusBar } from 'expo-status-bar';
 
 setDefaultOptions({
   locale: ptBR,
@@ -37,33 +36,22 @@ SplashScreen.preventAutoHideAsync();
 
 const App = () => {
   const { isAuthed } = useMyContext();
-  const [isReady, setReady] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        await Font.loadAsync(fonts);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setReady(true);
-      }
-    })();
-  }, []);
 
   useEffect(() => {
     if (isAuthed === undefined) return;
 
-    isAuthed
-      ? registerBackgroundFetchAsync()
-      : unregisterBackgroundFetchAsync();
+    if (isAuthed) {
+      registerBackgroundFetchAsync();
+    } else {
+      unregisterBackgroundFetchAsync();
+    }
   }, [isAuthed]);
 
   const onLayoutRootView = useCallback(async () => {
-    if (isReady) await SplashScreen.hideAsync();
-  }, [isReady]);
+    await SplashScreen.hideAsync();
+  }, []);
 
-  if (!isReady || isAuthed === undefined) return null;
+  if (isAuthed === undefined) return null;
 
   return (
     <View style={StyleSheet.absoluteFill} onLayout={onLayoutRootView}>
@@ -92,6 +80,7 @@ const AppRoot = () => (
         fetcher: (url) =>
           apiUtils.apiCall.get(url, apiUtils.authHeader()).then((v) => v.data),
       }}>
+      <StatusBar />
       <App />
       <MyAlert />
       <MyToast />

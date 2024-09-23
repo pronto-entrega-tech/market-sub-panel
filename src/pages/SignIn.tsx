@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import {
-  Camera,
+  CameraView,
+  useCameraPermissions,
   PermissionStatus,
-  BarCodeScanningResult as ScanningResult,
+  BarcodeScanningResult as ScanningResult,
 } from 'expo-camera';
 import Loading from '~/components/Loading';
 import { api } from '~/services/api';
@@ -19,7 +20,7 @@ import { myColors } from '~/constants/myColors';
 const SignIn = () => {
   const { setAccessToken, alert } = useMyContext();
   const [isLoading, , withLoading] = useLoading();
-  const [permission] = Camera.useCameraPermissions({ request: true });
+  const [permission] = useCameraPermissions({ request: true });
 
   if (isLoading || permission?.status !== PermissionStatus.GRANTED)
     return <Loading />;
@@ -39,9 +40,9 @@ const SignIn = () => {
       <MyText style={styles.title}>
         Escane o QR Code de conexão{'\n'}para entrar
       </MyText>
-      <Camera
-        onBarCodeScanned={handleQRCode}
-        barCodeScannerSettings={{ barCodeTypes: ['qr'] }}
+      <CameraView
+        onBarcodeScanned={handleQRCode}
+        barcodeScannerSettings={{ barcodeTypes: ['qr'] }}
         style={{ height: '100%', width: '100%' }}
       />
       <ScannerMask />

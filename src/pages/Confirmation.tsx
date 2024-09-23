@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  Camera,
+  CameraView,
+  useCameraPermissions,
   PermissionStatus,
-  BarCodeScanningResult as ScanningResult,
+  BarcodeScanningResult as ScanningResult,
 } from 'expo-camera';
 import Loading from '~/components/Loading';
 import { api } from '~/services/api';
@@ -23,7 +24,7 @@ const Confirmation = () => {
   const { alert } = useMyContext();
   const { addTask } = useTasksContext();
   const [isLoading, , withLoading] = useLoading();
-  const [permission] = Camera.useCameraPermissions({ request: true });
+  const [permission] = useCameraPermissions({ request: true });
 
   if (isLoading || permission?.status !== PermissionStatus.GRANTED)
     return <Loading />;
@@ -46,9 +47,11 @@ const Confirmation = () => {
         const confirm = async () => {
           const hasConnection = await getHasConnection();
 
-          !hasConnection
-            ? addConfirmToTasks()
-            : await api.orders.confirm(order_id, token);
+          if (!hasConnection) {
+            addConfirmToTasks();
+          } else {
+            await api.orders.confirm(order_id, token);
+          }
 
           resolve();
         };
@@ -66,9 +69,9 @@ const Confirmation = () => {
   return (
     <>
       <MyHeader title='QR Code de confirmação' goBackLess dividerLess />
-      <Camera
-        onBarCodeScanned={handleQRCode}
-        barCodeScannerSettings={{ barCodeTypes: ['qr'] }}
+      <CameraView
+        onBarcodeScanned={handleQRCode}
+        barcodeScannerSettings={{ barcodeTypes: ['qr'] }}
         style={{ height: '100%', width: '100%' }}
       />
       <ScannerMask />

@@ -61,11 +61,12 @@ const MyToast = () => {
     };
   }, [toastState, modalState.opacity, modalState.scale]);
 
-  const map: { [x: string]: { icon: IconName; color: string } } = {
+  const map = {
     Error: { icon: 'close-circle', color: 'red' },
     Confirmation: { icon: 'check', color: '#4BB543' },
-  };
-  const { icon, color } = map[toastState.type ?? ''] ?? map.Confirmation;
+  } satisfies { [x: string]: { icon: IconName; color: string } };
+  const { icon, color } =
+    (toastState.type && map[toastState.type]) ?? map.Confirmation;
 
   return (
     <Animated.View

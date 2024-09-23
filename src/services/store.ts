@@ -13,9 +13,11 @@ const key = {
 
 export const store = {
   setIsNewUser: async (isNewUser: boolean) => {
-    !isNewUser
-      ? await AsyncStorage.setItem(key.isNewUser, 'false')
-      : await AsyncStorage.removeItem(key.isNewUser);
+    if (!isNewUser) {
+      await AsyncStorage.setItem(key.isNewUser, 'false');
+    } else {
+      await AsyncStorage.removeItem(key.isNewUser);
+    }
   },
 
   getIsNewUser: async () => {
@@ -24,9 +26,11 @@ export const store = {
   },
 
   setRefreshToken: async (value: string | null) => {
-    value
-      ? await AsyncStorage.setItem(key.refreshToken, value)
-      : await AsyncStorage.removeItem(key.refreshToken);
+    if (value) {
+      await AsyncStorage.setItem(key.refreshToken, value);
+    } else {
+      await AsyncStorage.removeItem(key.refreshToken);
+    }
   },
 
   getRefreshToken: async () => {

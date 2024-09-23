@@ -7,7 +7,6 @@ import {
   ViewStyle,
   Pressable,
 } from 'react-native';
-import { device } from '~/constants/device';
 import { myColors } from '~/constants/myColors';
 import { zIndex } from '~/constants/zIndex';
 import { ModalState } from '~/hooks/useModalState';
@@ -30,7 +29,7 @@ const CenterModal = ({
     Animated.timing(state.opacity, {
       toValue: isVisible ? 1 : 0,
       duration: 200,
-      useNativeDriver: !device.web,
+      useNativeDriver: true,
     }).start(() => setShow(!!isVisible));
   }, [isVisible, state.opacity]);
 
@@ -50,7 +49,7 @@ const CenterModal = ({
 const styles = StyleSheet.create({
   container: {
     zIndex: zIndex.Modal,
-    position: !device.web ? 'absolute' : ('fixed' as any),
+    position: 'absolute',
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
